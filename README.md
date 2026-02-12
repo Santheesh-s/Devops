@@ -16,7 +16,7 @@ SSH Configuration: Install and enable the OpenSSH server to allow remote managem
 Git Installation: Install Git and OpenSSH client to manage source code:
 
 sudo apt install git openssh-client -y
-Java Environment: Install OpenJDK (version 17 or 21) as it is required for running Jenkins:
+Java Environment: Install OpenJDK (version 17 or 21), required for running Jenkins:
 
 sudo apt install openjdk-17-jdk -y
 2. Docker Infrastructure & Manual Deployment
@@ -24,17 +24,17 @@ Docker is used to package applications into portable containers.
 
 Installation: Install Docker Engine and associated plugins (buildx, compose).
 
-Permissions: Add the current user and the Jenkins user to the docker group to execute commands without sudo:
+Permissions: Add the current user and Jenkins user to the docker group to run commands without sudo:
 
 sudo usermod -aG docker $USER
 sudo usermod -aG docker jenkins
-Nginx Static Hosting: Host static sites quickly by mounting a local directory to an Nginx container:
+Nginx Static Hosting: Quickly host static sites by mounting a local directory to an Nginx container:
 
 docker run -d --name web-container -p 8080:80 -v $(pwd):/usr/share/nginx/html nginx:alpine
 3. Application Preparation
 Before automation, applications must be verified locally.
 
-Node.js: Install the LTS version of Node.js and build-essential for compiling dependencies:
+Node.js: Install the LTS version of Node.js and build tools:
 
 sudo apt install nodejs npm build-essential -y
 Local Build: Clone the repository, install dependencies, and test:
@@ -76,7 +76,7 @@ Docker Image Build
 
 Container Deployment
 
-Deployment: The final result is an application accessible via the server IP on a designated port (e.g., port 3000).
+Deployment: The application will be accessible via the server IP on a designated port (e.g., port 3000).
 
 5. Validation & Maintenance
 Verification: Ensure the container status is "Up" and port mappings are correct:
